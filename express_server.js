@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 
 function generateRandomString() {
 let r = (Math.random() + 1).toString(36).substring(7);
+return r;
 }
 
 const urlDatabase = {
@@ -41,6 +42,7 @@ app.post("/urls", (req, res) => {
   res.send("Ok");         // Respond with 'Ok' (we will replace this)
 });
 
+shortURL = generateRandomString();
  app.get("/urls/:shortURL", (req, res) => {
   const templateVars = { shortURL: req.params.shortURL, longURL: urlDatabase[req.params.shortURL]};
   res.render("urls_show", templateVars);
